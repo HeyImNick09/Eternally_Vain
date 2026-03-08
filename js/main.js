@@ -134,14 +134,25 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalSlides = 0;
 
     function calculateSlidesPerView() {
-        if (window.innerWidth <= 768) return 1;
-        if (window.innerWidth <= 1024) return 2;
+        const width = window.innerWidth;
+        if (width <= 768) return 1;
+        if (width <= 1024) return 2;
         return 3;
     }
 
     function initCarousel() {
+        if (!track || cards.length === 0) return;
+        
         slidesPerView = calculateSlidesPerView();
-        totalSlides = Math.max(0, cards.length - slidesPerView + 1);
+        
+        // On mobile, total slides = number of cards
+        // On desktop, total slides = cards - slidesPerView + 1
+        if (window.innerWidth <= 768) {
+            totalSlides = cards.length;
+        } else {
+            totalSlides = Math.max(0, cards.length - slidesPerView + 1);
+        }
+        
         currentSlide = Math.min(currentSlide, totalSlides - 1);
         if (currentSlide < 0) currentSlide = 0;
 
@@ -162,12 +173,20 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCarousel() {
         if (!track || cards.length === 0) return;
         
-        // Calculate proper card width including gap
-        const cardWidth = cards[0].offsetWidth;
-        const gap = window.innerWidth <= 768 ? 0 : 24;
-        const offset = currentSlide * (cardWidth + gap);
+        const isMobile = window.innerWidth <= 768;
         
-        track.style.transform = `translateX(-${offset}px)`;
+        if (isMobile) {
+            // On mobile: each card is 100% of container width
+            const containerWidth = track.parentElement.offsetWidth;
+            const offset = currentSlide * containerWidth;
+            track.style.transform = `translateX(-${offset}px)`;
+        } else {
+            // On desktop: calculate with gap
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 24;
+            const offset = currentSlide * (cardWidth + gap);
+            track.style.transform = `translateX(-${offset}px)`;
+        }
 
         // Update dots
         if (dotsContainer) {
