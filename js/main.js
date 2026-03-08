@@ -161,8 +161,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCarousel() {
         if (!track || cards.length === 0) return;
-        const cardWidth = cards[0].offsetWidth + 24; // gap
-        track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+        
+        // Calculate proper card width including gap
+        const cardWidth = cards[0].offsetWidth;
+        const gap = window.innerWidth <= 768 ? 0 : 24;
+        const offset = currentSlide * (cardWidth + gap);
+        
+        track.style.transform = `translateX(-${offset}px)`;
 
         // Update dots
         if (dotsContainer) {
@@ -184,24 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
     }
 
-    // Auto-advance testimonials every 5 seconds
-    let autoSlide = setInterval(() => {
-        if (totalSlides > 0) {
-            goToSlide((currentSlide + 1) % totalSlides);
-        }
-    }, 5000);
-
-    // Pause auto-advance on hover
-    if (track) {
-        track.addEventListener('mouseenter', () => clearInterval(autoSlide));
-        track.addEventListener('mouseleave', () => {
-            autoSlide = setInterval(() => {
-                if (totalSlides > 0) {
-                    goToSlide((currentSlide + 1) % totalSlides);
-                }
-            }, 5000);
-        });
-    }
+    // Auto-slide disabled for better manual control on mobile
 
     window.addEventListener('resize', initCarousel);
     initCarousel();
