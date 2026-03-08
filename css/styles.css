@@ -1086,13 +1086,15 @@ input, select, textarea {
     overflow: hidden;
     width: 100%;
     position: relative;
+    margin: 0 auto;
 }
 
 .testimonials-track {
     display: flex;
     gap: 24px;
-    transition: transform var(--transition-slow);
+    transition: transform 0.4s ease;
     padding: 10px 0;
+    will-change: transform;
 }
 
 .testimonial-card {
@@ -1820,20 +1822,29 @@ input, select, textarea {
     }
 
     .testimonials-wrapper {
-        margin: 0;
+        margin: 0 -20px;
         padding: 0;
         overflow: hidden;
+        width: calc(100% + 40px);
     }
 
     .testimonial-card {
-        min-width: 100%;
-        width: 100%;
-        max-width: 100%;
+        min-width: calc(100vw - 40px);
+        width: calc(100vw - 40px);
+        max-width: calc(100vw - 40px);
         padding: 24px 20px;
         min-height: 320px;
         box-sizing: border-box;
         flex-shrink: 0;
-        margin: 0;
+        margin: 0 20px;
+    }
+
+    .testimonial-card:first-child {
+        margin-left: 20px;
+    }
+
+    .testimonial-card:last-child {
+        margin-right: 20px;
     }
 
     .testimonial-card p {
@@ -1959,17 +1970,28 @@ input, select, textarea {
     }
 
     .testimonials-wrapper {
+        margin: 0 -16px;
+        padding: 0;
         overflow: hidden;
+        width: calc(100% + 32px);
     }
 
     .testimonial-card {
         padding: 20px 16px;
         min-height: 340px;
-        min-width: 100%;
-        width: 100%;
-        max-width: 100%;
+        min-width: calc(100vw - 32px);
+        width: calc(100vw - 32px);
+        max-width: calc(100vw - 32px);
         flex-shrink: 0;
-        margin: 0;
+        margin: 0 16px;
+    }
+
+    .testimonial-card:first-child {
+        margin-left: 16px;
+    }
+
+    .testimonial-card:last-child {
+        margin-right: 16px;
     }
 
     .testimonial-card p {

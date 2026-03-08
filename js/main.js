@@ -176,9 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const isMobile = window.innerWidth <= 768;
         
         if (isMobile) {
-            // On mobile: each card is 100% of container width
-            const containerWidth = track.parentElement.offsetWidth;
-            const offset = currentSlide * containerWidth;
+            // On mobile: use viewport width for perfect alignment
+            const vw = window.innerWidth;
+            const offset = currentSlide * vw;
             track.style.transform = `translateX(-${offset}px)`;
         } else {
             // On desktop: calculate with gap
