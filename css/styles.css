@@ -1080,7 +1080,11 @@ input, select, textarea {
 /* --- Testimonials Section --- */
 .testimonials {
     background: var(--color-bg-primary);
+}
+
+.testimonials-wrapper {
     overflow: hidden;
+    width: 100%;
 }
 
 .testimonials-track {
@@ -1088,6 +1092,7 @@ input, select, textarea {
     gap: 24px;
     transition: transform var(--transition-slow);
     padding: 10px 0;
+    width: 100%;
 }
 
 .testimonial-card {
@@ -1814,11 +1819,18 @@ input, select, textarea {
         grid-template-columns: 1fr;
     }
 
+    .testimonials-wrapper {
+        margin: 0;
+        padding: 0;
+    }
+
     .testimonial-card {
         min-width: 100%;
         width: 100%;
+        max-width: 100%;
         padding: 24px 20px;
         min-height: 320px;
+        box-sizing: border-box;
     }
 
     .testimonial-card p {
@@ -1827,8 +1839,9 @@ input, select, textarea {
     }
 
     .testimonials-track {
-        gap: 16px;
-        padding: 10px 4px;
+        gap: 0;
+        padding: 10px 0;
+        width: 100%;
     }
 
     .about-stats {
@@ -1944,10 +1957,16 @@ input, select, textarea {
     .testimonial-card {
         padding: 20px 16px;
         min-height: 340px;
+        max-width: 100%;
     }
 
     .testimonial-card p {
         font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .testimonial-stars {
+        margin-bottom: 12px;
     }
 
     .gallery-grid {
