@@ -1092,12 +1092,16 @@ input, select, textarea {
 
 .testimonial-card {
     min-width: calc(33.333% - 16px);
+    width: calc(33.333% - 16px);
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 32px;
     flex-shrink: 0;
     transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
 }
 
 .testimonial-card:hover {
@@ -1125,6 +1129,7 @@ input, select, textarea {
     color: var(--color-text-secondary);
     line-height: 1.8;
     margin-bottom: 24px;
+    flex-grow: 1;
 }
 
 .testimonial-author {
@@ -1739,6 +1744,26 @@ input, select, textarea {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --section-padding: 60px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-desc {
+        font-size: 0.95rem;
+    }
+
     .nav-menu {
         position: fixed;
         top: 0;
@@ -1790,7 +1815,20 @@ input, select, textarea {
     }
 
     .testimonial-card {
-        min-width: calc(100% - 0px);
+        min-width: 100%;
+        width: 100%;
+        padding: 24px 20px;
+        min-height: 320px;
+    }
+
+    .testimonial-card p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .testimonials-track {
+        gap: 16px;
+        padding: 10px 4px;
     }
 
     .about-stats {
@@ -1824,17 +1862,92 @@ input, select, textarea {
     .injectable-intro {
         flex-direction: column;
     }
+
+    .service-card {
+        padding: 24px 20px;
+    }
+
+    .service-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .injectable-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .about-mission {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .credential {
+        padding: 16px;
+        font-size: 0.8rem;
+    }
+
+    .perk {
+        padding: 20px 16px;
+    }
+
+    .perk h4 {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
+    :root {
+        --section-padding: 50px;
+    }
+
+    .section {
+        padding: 50px 0;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .section-label {
+        font-size: 0.7rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-tagline {
+        font-size: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 12px;
+        width: 100%;
     }
 
     .btn {
-        padding: 12px 24px;
-        font-size: 0.8rem;
+        padding: 14px 28px;
+        font-size: 0.85rem;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .testimonial-card {
+        padding: 20px 16px;
+        min-height: 340px;
+    }
+
+    .testimonial-card p {
+        font-size: 0.9rem;
     }
 
     .gallery-grid {
